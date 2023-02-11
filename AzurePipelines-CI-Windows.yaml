@@ -2,11 +2,14 @@ pool:
   name: Azure Pipelines
   demands: maven
 
+variables:
+  Parameters.mavenPOMFile: 'app/pom.xml'
+
 steps:
 - task: Maven@3
   displayName: 'Maven app/pom.xml'
   inputs:
-    mavenPomFile: app/pom.xml
+    mavenPomFile: '$(Parameters.mavenPOMFile)'
     codeCoverageToolOption: Cobertura
 
 - task: CopyFiles@2
